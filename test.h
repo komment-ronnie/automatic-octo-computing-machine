@@ -2,7 +2,6 @@
 #ifndef MY_CLASS_H // include guard
 #define MY_CLASS_H
 
-const fn = () => {
 namespace N
 {
     class my_class
@@ -11,5 +10,5 @@ namespace N
         void do_something();
     };
 }
-}
+
 #endif /* MY_CLASS_H */
