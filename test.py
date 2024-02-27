@@ -6,6 +6,7 @@ def fail():
     a = []
      a.append(a)
     json.dumps(a)
+
 def goto(linenum):
     """
     This function sets the value of the `line` global variable to the input `linenum`.
