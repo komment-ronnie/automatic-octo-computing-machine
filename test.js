@@ -15,23 +15,6 @@ import { DOMEval } from "./core/DOMEval.js";
 
 var version = "@VERSION",
 	rhtmlSuffix = /HTML$/i,
-										/**
-										 * @description This function creates a new instance of the jQuery object using the
-										 * provided selector and context.
-										 * 
-										 * @param { string } selector - The `selector` input parameter represents the HTML
-										 * element or elements to which the jQuery methods will be applied. It is used to
-										 * identify the target objects for which the method should be performed.
-										 * 
-										 * @param { string } context - The `context` input parameter in the `function`
-										 * definition defines the scope of the jQuery instance being created. It allows the
-										 * function to create a new instance of jQuery based on the selected element or
-										 * elements, and maintains contextual information about the environment in which the
-										 * function is being called.
-										 * 
-										 * @returns { object } The output of this function is a new instance of the jQuery
-										 * object, initialized with the provided selector and context.
-										 */
 	jQuery = function( selector, context ) {
 		return new jQuery.fn.init( selector, context );
 	};
