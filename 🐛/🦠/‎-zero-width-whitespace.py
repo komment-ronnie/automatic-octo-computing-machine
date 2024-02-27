@@ -1,4 +1,4 @@
-const fn = () => {
-  console.log(0);
-
-}
+def func():
+  print("\n")
+  print("\n")
+  print("0")
