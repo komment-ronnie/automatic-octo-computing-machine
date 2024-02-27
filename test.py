@@ -7,6 +7,7 @@ def fail():
      a.append(a)
     json.dumps(a)
 
+
 def goto(linenum):
     global line
     line = linenum
