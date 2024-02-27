@@ -1,5 +1,4 @@
 import React from 'react';
-
 /**
  * @description This code defines a function `add` that takes two number arguments
  * and returns their sum, and another function `sin` that takes no argument and returns
