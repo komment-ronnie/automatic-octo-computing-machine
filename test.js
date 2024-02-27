@@ -15,6 +15,23 @@ import { DOMEval } from "./core/DOMEval.js";
 
 var version = "@VERSION",
 	rhtmlSuffix = /HTML$/i,
+										/**
+										 * @description This function creates a new instance of the jQuery object using the
+										 * provided selector and context.
+										 * 
+										 * @param { string } selector - The `selector` input parameter represents the HTML
+										 * element or elements to which the jQuery methods will be applied. It is used to
+										 * identify the target objects for which the method should be performed.
+										 * 
+										 * @param { string } context - The `context` input parameter in the `function`
+										 * definition defines the scope of the jQuery instance being created. It allows the
+										 * function to create a new instance of jQuery based on the selected element or
+										 * elements, and maintains contextual information about the environment in which the
+										 * function is being called.
+										 * 
+										 * @returns { object } The output of this function is a new instance of the jQuery
+										 * object, initialized with the provided selector and context.
+										 */
 	jQuery = function( selector, context ) {
 		return new jQuery.fn.init( selector, context );
 	};
@@ -23,9 +40,37 @@ jQuery.fn = jQuery.prototype = {
 	jquery: version,
 	constructor: jQuery,
 	length: 0,
+	/**
+	 * @description This function takes the `this` object and returns a new array created
+	 * by calling the `slice()` method on it, which recursively extracts a subset of
+	 * elements from the original array.
+	 * 
+	 * @returns { array } The function `slice.call(this)` returns an array of objects
+	 * containing the same properties and methods as the original object. In other words,
+	 * it creates a shallow copy of the object.
+	 */
 	toArray: function() {
 		return slice.call( this );
 	},
+	/**
+	 * @description This function takes a number `num` and returns an array of elements
+	 * from an object or set, depending on the value of `num`. If `num` is null, it returns
+	 * all the elements in a clean array. If `num` is a negative integer, it returns just
+	 * the one element at the specified position. Otherwise, it returns all the elements
+	 * from the set.
+	 * 
+	 * @param { number } num - The `num` input parameter determines whether the function
+	 * returns an entire array or a single element from a set. If `num` is null, the
+	 * function returns all elements in an array using `slice.call()`. If `num` is a
+	 * negative number, the function returns the specified element from the set. Otherwise,
+	 * it returns the entire set.
+	 * 
+	 * @returns { array } The output of this function depends on the input `num`. If `num`
+	 * is `null`, the function returns a clean array containing all elements in the set.
+	 * If `num` is a negative integer, the function returns the element at the specified
+	 * index plus the length of the set, wrapping around to the beginning of the set if
+	 * necessary. Otherwise, the function returns the single element at the specified index.
+	 */
 	get: function( num ) {
 
 		// Return all the elements in a clean array
@@ -36,43 +81,154 @@ jQuery.fn = jQuery.prototype = {
 		// Return just the one element from the set
 		return num < 0 ? this[ num + this.length ] : this[ num ];
 	},
+	/**
+	 * @description This function takes an array of elements and merges them with the
+	 * existing objects of a constructor, returning a new object that combines both. It
+	 * also retains the previous object as the "prevObject" property.
+	 * 
+	 * @param { object } elems - The `elems` input parameter merges an array of elements
+	 * with the current object, creating a new object that combines the properties and
+	 * methods of both.
+	 * 
+	 * @returns { object } The function merges the elements in `elems` with the existing
+	 * elements in the current object, creating a new object that combines both sets of
+	 * elements. The resulting object returns the merged elements and keeps track of the
+	 * original object as its "prevObject". In summary, the output is a new object
+	 * containing a mix of elements from both the current object and `elems`.
+	 */
 	pushStack: function( elems ) {
 		var ret = jQuery.merge( this.constructor(), elems );
 		ret.prevObject = this;
 		return ret;
 	},
+	/**
+	 * @description This function is a jQuery method for executing a callback function
+	 * on each element in an array or object passed to it. It returns the result of the
+	 * callback function for each element.
+	 * 
+	 * @param {  } callback - The `callback` input parameter in the provided code is a
+	 * function that is passed to the `jQuery.each()` method as an argument. The `callback`
+	 * function is then executed for each element in the `this` object, which is the
+	 * collection of elements being iterated over by the `jQuery.each()` method.
+	 * 
+	 * @returns { object } The `function` returns a wrapped version of the `jQuery.each`
+	 * method, which iterates over an array or object and calls a provided callback
+	 * function for each item. The callback function is passed two arguments: the current
+	 * item and the index of the item in the array.
+	 */
 	each: function( callback ) {
 		return jQuery.each( this, callback );
 	},
+	/**
+	 * @description This function takes a callback function as an argument and applies
+	 * it to each element in the collection, pushing the results back onto the stack.
+	 * 
+	 * @param {  } callback - The `callback` input parameter is a function that takes two
+	 * arguments: `i` and `elem`. It is called for each element in the jQuery collection
+	 * being processed, and it returns a value that is then pushed onto the stack using
+	 * the `return` statement. The `callback` function can be used to perform any action
+	 * on each element, such as modifying its properties or adding additional content.
+	 * 
+	 * @returns { object } The function returns a new array containing the results of
+	 * applying the `callback` function to each element in the original array, using the
+	 * `pushStack` method to accumulate the results in a new stack. The output is an array
+	 * of elements, where each element is the result of applying the `callback` function
+	 * to the corresponding element in the original array.
+	 */
 	map: function( callback ) {
 		return this.pushStack( jQuery.map( this, function( elem, i ) {
 			return callback.call( elem, i, elem );
 		} ) );
 	},
+	/**
+	 * @description This function takes an array of arguments and pushes them onto the
+	 * stack of a given object using the `slice()` method and the `pushStack()` method.
+	 * 
+	 * @returns { object } The output of this function is a new array that contains the
+	 * same elements as the original array passed to `slice()`, along with any additional
+	 * elements pushed onto the stack using `pushStack()`.
+	 */
 	slice: function() {
 		return this.pushStack( slice.apply( this, arguments ) );
 	},
+	/**
+	 * @description This function returns the first element of an array-like object `this`.
+	 * 
+	 * @returns { object } The function returns the first element of an array-like object
+	 * `this`. In other words, it returns the value of `this[0]`.
+	 */
 	first: function() {
 		return this.eq( 0 );
 	},
+	/**
+	 * @description This function returns the negative of the value of the `this` object
+	 * at the specified index (-1).
+	 * 
+	 * @returns { number } The output of this function is `undefined`. The return statement
+	 * inside the function reference the property `eq` on the `this` object, which is not
+	 * defined. Therefore, the function returns the value of `undefined`.
+	 */
 	last: function() {
 		return this.eq( -1 );
 	},
+	/**
+	 * @description This function takes an array of elements from the `this` context and
+	 * returns a new array with only every other element. It uses the `pushStack()` method
+	 * to add the filtered elements to the stack, and then returns the result.
+	 * 
+	 * @returns { array } The output of this function is an array of odd-indexed elements
+	 * from the input array, with the indices incremented by 1.
+	 */
 	even: function() {
 		return this.pushStack( jQuery.grep( this, function( _elem, i ) {
 			return ( i + 1 ) % 2;
 		} ) );
 	},
+	/**
+	 * @description This function creates a new array by filtering the elements of the
+	 * current array based on a condition. It takes the current array as input, applies
+	 * a callback function to each element, and then pushes the filtered elements onto a
+	 * new stack. The callback function returns true for even-indexed elements and false
+	 * for odd-indexed elements, which is why only half of the original array is pushed
+	 * onto the new stack.
+	 * 
+	 * @returns { array } The output of this function is an array of odd elements from
+	 * the original array.
+	 */
 	odd: function() {
 		return this.pushStack( jQuery.grep( this, function( _elem, i ) {
 			return i % 2;
 		} ) );
 	},
+	/**
+	 * @description This function adds an element to the end of an array-like object's
+	 * stack, handling edge cases for negative indices and empty arrays. It returns a new
+	 * array with the added element.
+	 * 
+	 * @param { number } i - The `i` input parameter represents the index of the element
+	 * to be pushed onto the stack. It determines the position of the new element in the
+	 * stack, with values less than zero indicating negative indices and values greater
+	 * than or equal to the length of the stack indicating positive indices.
+	 * 
+	 * @returns { array } The function returns a new array containing the element at
+	 * position `j` of the original array, based on its index `i`. If `i` is positive and
+	 * less than the length of the array, the function returns the element at that position.
+	 * If `i` is negative or greater than the length of the array, the function returns
+	 * an empty array.
+	 */
 	eq: function( i ) {
 		var len = this.length,
 			j = +i + ( i < 0 ? len : 0 );
 		return this.pushStack( j >= 0 && j < len ? [ this[ j ] ] : [] );
 	},
+	/**
+	 * @description This function returns the previous object or instances of the constructor
+	 * function if none exists.
+	 * 
+	 * @returns { object } The function returns the `this.prevObject` or the `this.constructor()`
+	 * if it's not available. In other words, it returns the previous object reference
+	 * or falls back to the constructor function if none is provided.
+	 */
 	end: function() {
 		return this.prevObject || this.constructor();
 	}
