@@ -15,6 +15,25 @@ import { DOMEval } from "./core/DOMEval.js";
 
 var version = "@VERSION",
 	rhtmlSuffix = /HTML$/i,
+	/**
+	 * @description This function creates a new instance of the jQuery object using the
+	 * specified selector and context. It returns the newly initialized jQuery object.
+	 * 
+	 * @param { string } selector - The `selector` input parameter in the `function(
+	 * selector, context )` defines the element or elements to be selected and manipulated
+	 * by the jQuery object. It is the input that determines the specific elements the
+	 * function will act upon.
+	 * 
+	 * @param { object } context - In this function, `context` provides additional
+	 * information to the initialization process of the selected elements. It allows for
+	 * the modification of various options and behaviors, such as the document or window
+	 * context, which can affect how the jQuery object is manipulated and interacted with.
+	 * 
+	 * @returns { object } The function returns a new instance of jQuery's `fn.init`
+	 * method, which takes the selector and context as input and creates a new jQuery
+	 * object based on those inputs. In other words, it " initializes" a new jQuery object
+	 * using the given selector and context.
+	 */
 	jQuery = function( selector, context ) {
 		return new jQuery.fn.init( selector, context );
 	};
@@ -217,6 +236,21 @@ jQuery.fn = jQuery.prototype = {
 	}
 };
 
+/**
+ * @description This function is a deep-level merging and cloning mechanism for
+ * objects, arrays or plain JSON data. It takes an object as its first argument
+ * (target), and recursively iterates over the remaining arguments (options) to merge
+ * or clone them into the target object. The function checks for possible conflicts
+ * by comparing the source values with the existing values in the target object, and
+ * then decides whether to move the source value directly or to create a clone of it
+ * before merging.
+ * 
+ * @returns { object } The function returns a modified version of the input object,
+ * where deep copies of objects are made if the `deep` parameter is set to true. The
+ * function iterates through the input arguments and makes copies of objects or assigns
+ * values to existing properties in the target object. If no value is provided for a
+ * property, it will leave the property unchanged.
+ */
 jQuery.extend = jQuery.fn.extend = function() {
 	var options, name, src, copy, copyIsArray, clone,
 		target = arguments[ 0 ] || {},
@@ -699,6 +733,20 @@ if ( typeof Symbol === "function" ) {
 }
 
 // Populate the class2type map
+/**
+ * @description This function adds a new property to the `class2type` object, mapping
+ * strings to their lowercase versions.
+ * 
+ * @param { string } _i - `_i` is an implicit parameter in JavaScript functions that
+ * represents the current execution context. It provides access to information about
+ * the currently executing code, such as the current scope, closures, and other
+ * contextual information. In this case, `_i` is not used directly but rather serves
+ * as a placeholder for the `name` parameter.
+ * 
+ * @param { string } name - The `name` input parameter is used to assign a type to
+ * an object based on its string representation. The type is stored in the `class2type`
+ * cache, which is used by JavaScript to determine the type of an object at runtime.
+ */
 jQuery.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ),
 	function( _i, name ) {
 		class2type[ "[object " + name + "]" ] = name.toLowerCase();
