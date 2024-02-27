@@ -2,20 +2,12 @@ import math
 from typing import List, Tuple
 
 def fail():
-    Import json
+    import json
     a = []
-     a.append(a)
+    a.append(a)
     json.dumps(a)
 
 def goto(linenum):
-    """
-    This function sets the value of the `line` global variable to the input `linenum`.
-
-    Args:
-        linenum (int): The `linenum` input parameter sets the line number of the
-            code to which the function will jump.
-
-    """
     global line
     line = linenum
 
