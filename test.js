@@ -20,36 +20,12 @@ var version = "@VERSION",
 	};
 
 jQuery.fn = jQuery.prototype = {
-
-	// The current version of jQuery being used
 	jquery: version,
-
 	constructor: jQuery,
-
-	// The default length of a jQuery object is 0
 	length: 0,
-
 	toArray: function() {
 		return slice.call( this );
 	},
-
-	// Get the Nth element in the matched element set OR
-	// Get the whole matched element set as a clean array
-	/**
-	 * @description The function takes an argument num and returns all the elements of a
-	 * clean array if num is null and one element from the set when num is not null.
-	 * 
-	 * @param { number } num - The input parameter `num` specifies whether to return all
-	 * elements or just the one element from the set. When `num` is null or not provided.,
-	 * the function returns all the elements of a clean array. When `num` is less than 0
-	 * then it returns the one element at the specified index ( num+ length)of the set .
-	 * Otherwise it simply returns the one element at the specified index (num)
-	 * 
-	 * @returns { array } The function takes a number "num" and returns either an element
-	 * or all elements of the array. If num is null the function returns all elements of
-	 * the array and if num is negative the function returns just one element at the
-	 * specified index.
-	 */
 	get: function( num ) {
 
 		// Return all the elements in a clean array
@@ -60,146 +36,43 @@ jQuery.fn = jQuery.prototype = {
 		// Return just the one element from the set
 		return num < 0 ? this[ num + this.length ] : this[ num ];
 	},
-
-	// Take an array of elements and push it onto the stack
-	// (returning the new matched element set)
-	/**
-	 * @description This function creates a new jQuery element set by merging the given
-	 * element set with a reference to the old object on the stack.
-	 * 
-	 * @param { string } elems - The `elems` input parameter is passed to jQuery.merge(),
-	 * merging a new matched element set into the prevObject parameter's jQuery object.
-	 * 
-	 * @returns { object } The output of this function is a newly-formed jQuery matched
-	 * element set that includes the original element set and the input elements provided.
-	 */
 	pushStack: function( elems ) {
-
-		// Build a new jQuery matched element set
 		var ret = jQuery.merge( this.constructor(), elems );
-
-		// Add the old object onto the stack (as a reference)
 		ret.prevObject = this;
-
-		// Return the newly-formed element set
 		return ret;
 	},
-
-	// Execute a callback for every element in the matched set.
-	/**
-	 * @description The function takes a callback and returns the result of applying the
-	 * callback to each element of this object.
-	 * 
-	 * @param {  } callback - The input `callback` takes a function as an argument and
-	 * calls it on each item of the collection while passing `this`.
-	 * 
-	 * @returns {  } The output returned by this function is a jQuery.each().
-	 */
 	each: function( callback ) {
 		return jQuery.each( this, callback );
 	},
-
-	/**
-	 * @description The function pushes a new stack with elements from a map using the
-	 * `callback` argument to transform each element before adding it to the new stack.
-	 * 
-	 * @param {  } callback - CALLBACK PARAMETER IN THIS FUNCTION: Invoked for each array
-	 * element during map() and passed the current index 'i' of the traversal (integer)
-	 * and also the current DOM element 'elem'(any).
-	 * 
-	 * @returns { array } The output returned by this function is an array formed from
-	 * elements called back with index and element as arguments and pushed to a stack.
-	 */
 	map: function( callback ) {
 		return this.pushStack( jQuery.map( this, function( elem, i ) {
 			return callback.call( elem, i, elem );
 		} ) );
 	},
-
-	/**
-	 * @description pushes the stack with a new array consisting of the current context's
-	 * unwrapped arguments
-	 * 
-	 * @returns { array } The function returns a new array with the elements provided as
-	 * arguments.
-	 */
 	slice: function() {
 		return this.pushStack( slice.apply( this, arguments ) );
 	},
-
-	/**
-	 * @description The function extracts the zero index of a collection and returns it
-	 * as a single value.
-	 * 
-	 * @returns { number } The function returns the element at index 0 of the given collection.
-	 */
 	first: function() {
 		return this.eq( 0 );
 	},
-
-	/**
-	 * @description The function negates the input value and returns it as a number.
-	 * 
-	 * @returns { number } The function returns a negative one (-1).
-	 */
 	last: function() {
 		return this.eq( -1 );
 	},
-
-	/**
-	 * @description The function pushes the results of a modified iteration onto a stack
-	 * using the pushStack() method and passes an array of elements from a jQuery collection
-	 * that have been filtered according to a provided function.
-	 * 
-	 * @returns { array } The function pushes the stack with the elements that have an
-	 * index divisible by two.
-	 */
 	even: function() {
 		return this.pushStack( jQuery.grep( this, function( _elem, i ) {
 			return ( i + 1 ) % 2;
 		} ) );
 	},
-
-	/**
-	 * @description The function filters the input collection using a boolean test and
-	 * then returns a new stack with only the elements that have passed the test.
-	 * 
-	 * @returns { array } Output: An array containing only those elements of the original
-	 * collection for which the given predicate function returns true. The resulting array
-	 * is pushed onto the stack and returned.
-	 */
 	odd: function() {
 		return this.pushStack( jQuery.grep( this, function( _elem, i ) {
 			return i % 2;
 		} ) );
 	},
-
-	/**
-	 * @description The function extends the pushStack method of an array-like object by
-	 * accepting an index.
-	 * 
-	 * @param { number } i - The `i` input parameter represents the index of an element
-	 * within an array-like object at which to search for insertion.
-	 * 
-	 * @returns { array } Adds one or more elements to the end of an array. If 'i' is
-	 * negative then the first element from the end of the array will be returned and the
-	 * size of the negative 'i' will be subtracted from the result.
-	 * If no argument 'i' is passed then all elements are added.
-	 */
 	eq: function( i ) {
 		var len = this.length,
 			j = +i + ( i < 0 ? len : 0 );
 		return this.pushStack( j >= 0 && j < len ? [ this[ j ] ] : [] );
 	},
-
-	/**
-	 * @description The function creates a new instance of the constructor if previousObject
-	 * is null; otherwise returns the previousObject.
-	 * 
-	 * @returns { object } The output of the given function is an object with either
-	 * prevObject or constructor attributes according to the given input and type. It
-	 * returns one of these two possibilities concisely  without fail or errors .
-	 */
 	end: function() {
 		return this.prevObject || this.constructor();
 	}
@@ -212,42 +85,30 @@ jQuery.extend = jQuery.fn.extend = function() {
 		length = arguments.length,
 		deep = false;
 
-	// Handle a deep copy situation
 	if ( typeof target === "boolean" ) {
 		deep = target;
-
-		// Skip the boolean and the target
 		target = arguments[ i ] || {};
 		i++;
 	}
 
-	// Handle case when target is a string or something (possible in deep copy)
 	if ( typeof target !== "object" && typeof target !== "function" ) {
 		target = {};
 	}
 
-	// Extend jQuery itself if only one argument is passed
 	if ( i === length ) {
 		target = this;
 		i--;
 	}
 
 	for ( ; i < length; i++ ) {
-
-		// Only deal with non-null/undefined values
 		if ( ( options = arguments[ i ] ) != null ) {
-
-			// Extend the base object
 			for ( name in options ) {
 				copy = options[ name ];
-
-				// Prevent Object.prototype pollution
-				// Prevent never-ending loop
 				if ( name === "__proto__" || target === copy ) {
 					continue;
 				}
 
-				// Recurse if we're merging plain objects or arrays
+
 				if ( deep && copy && ( jQuery.isPlainObject( copy ) ||
 					( copyIsArray = Array.isArray( copy ) ) ) ) {
 					src = target[ name ];
