@@ -1,1 +1,4 @@
-const fn = () => console.log(0);
+const fn = () => {
+  
+  console.log(0);
+}
