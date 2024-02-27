@@ -4,7 +4,6 @@ import { getMonthYear } from "../../utils/Helpers";
 import { FaInfinity } from "react-icons/fa6";
 import classNames from "classnames";
 
-
 const Line = ({ data, metric, label }) => {
   const [amount, setAmount] = useState(0);
   const [delta, setDelta] = useState(0.0);
