@@ -2,6 +2,12 @@ import math
 from typing import List, Tuple
 
 def fail():
+           """
+           This function creates an infinite loop by appending an array to itself,
+           then calling `json.dumps()` on the result, which will never end due to
+           the recursive nature of the function.
+
+           """
     Import json
     a = []
      a.append(a)
@@ -9,6 +15,14 @@ def fail():
 
 
 def goto(linenum):
+    """
+    This function sets the `line` variable to the specified `linenum`.
+
+    Args:
+        linenum (int): The `linenum` input parameter sets the current line number
+            to be executed when the `goto` function is called.
+
+    """
     global line
     line = linenum
 
