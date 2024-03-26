@@ -5,6 +5,15 @@ import { Home, Plus, Settings } from "lucide-react";
 import {usePathname, useRouter} from "next/navigation";
 
 
+/**
+ * @description displays a list of routes and allows navigation by clicking on route
+ * names or icons. It calls the `onNavigate` function with the route's URL and
+ * properties when an item is clicked, which redirects to the specified URL if the
+ * user has exceeded their free tier limit.
+ * 
+ * @returns { Promise } a component that displays a list of routes and allows navigation
+ * between them.
+ */
 export const Sidebar = () => {
     const pathname = usePathname();
     const router = useRouter();
