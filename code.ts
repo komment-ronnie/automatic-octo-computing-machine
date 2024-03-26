@@ -5,21 +5,6 @@ import { Home, Plus, Settings } from "lucide-react";
 import {usePathname, useRouter} from "next/navigation";
 
 
-/**
- * @description This function defines a component that renders a list of navigation
- * routes using React Hooks. The component uses the `usePathname` and `useRouter`
- * hooks to get the current pathname and router instance, respectively. It then maps
- * over an array of route objects and renders a button for each route, which when
- * clicked will navigate to the corresponding URL using the `onNavigate` function.
- * The `onNavigate` function takes two arguments: the URL to navigate to and a boolean
- * indicating whether the user is a paid subscriber.
- * 
- * @returns { string } The function returns a JSX component that renders a list of
- * navigation routes on a flex container with a grey background and white text. Each
- * route is represented by an icon and a label, and the user can click on each route
- * to navigate to it. The function takes two arguments: `url` (a string) and `pro`
- * (a boolean), which are passed to the `onNavigate` function for further processing.
- */
 export const Sidebar = () => {
     const pathname = usePathname();
     const router = useRouter();
