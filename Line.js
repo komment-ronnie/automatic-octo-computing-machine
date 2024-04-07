@@ -198,6 +198,104 @@ const Line = ({ data, metric, label }) => {
        * color schemes. It allows for customization of the chart's appearance based on user
        * preferences or requirements.
        */}
+      {/**
+       * @description generates a line plot with points representing data, options for
+       * customizing appearance and behavior are provided including margins, y-scale,
+       * tooltip, markers, curve, and theme.
+       * 
+       * @param { object } data - 2D array of coordinates for the line plot, with each
+       * element of the array representing a data point on the graph.
+       * 
+       * @param { number } margin - 10-pixel margins applied to the top, right, bottom, and
+       * left sides of the chart.
+       * 
+       * @param { `linear` scale. } yScale - 1D linear scale for the y-axis, setting the
+       * minimum and maximum values of the data points to be displayed based on the input
+       * range, with the option to increase the maximum value by a factor for highlighting
+       * purposes.
+       * 
+       * 	1/ `type`: The scale type is set to "linear", indicating that the value will
+       * increase linearly as the data increases.
+       * 	2/ `min`: The minimum value of the scale is 0.
+       * 	3/ `max`: The maximum value of the scale is determined by taking the maximum value
+       * of the `points` array and multiplying it by 1.5, or 10000 if no points are provided.
+       * This sets the upper limit of the y-axis scale.
+       * 	4/ `yScale`: The scale attribute is a linear scale, which means that each data
+       * point contributes to the overall shape of the line.
+       * 	5/ `tooltip`: A function is provided to render tooltips for each data point. If
+       * `delta` is true (i.e., there are no null values in the input array), the tooltip
+       * will display the month and year at the corresponding x-axis value, along with the
+       * y-value for that point. Otherwise, the tooltip will be null.
+       * 
+       * 
+       * @param { element reference. } tooltip - tooltip display of line chart markers,
+       * providing additional information on mouse hover actions.
+       * 
+       * 	1/ `({ datum })`: The tooltip component takes a `datum` parameter, which represents
+       * the current data point being rendered.
+       * 	2/ ` className="line-tooltip"`: Adds a "line-tooltip" class to the tooltip element
+       * for styling purposes.
+       * 	3/ `<span className="label">`: Creates a label tag with a "label" class. The
+       * contents of this tag will be displayed as the x-axis value of the data point.
+       * 	4/ `<span className="value">`: Creates a value tag with a "value" class. The
+       * contents of this tag will be displayed as the y-axis value of the data point.
+       * 	5/ `{if (delta) { return null; } else { return tooltip } }`): Checks whether
+       * `delta` is truthy (i.e., not null or undefined). If it's not, then the function
+       * returns null, otherwise it returns the tooltip component. The `delta` variable is
+       * passed as a prop from the parent component and represents whether the tooltip
+       * should be displayed in the form of a label or an value tag.
+       * 	6/ `[...]`: An array of markers is generated using the `markers` prop. Each marker
+       * has an `axis` property set to "y", a `lineStyle` property set to { stroke: "#717d86",
+       * strokeWidth: 1.5 }, and a `value` property set to 0.
+       * 	7/ `[...]`: The `curve` prop is set to "natural". This specifies the shape of the
+       * line connecting the data points.
+       * 	8/ `[...]`: The `enableGridX` and `enableGridY` props are set to false. These
+       * properties control whether grid lines are displayed for the x- and y-axes, respectively.
+       * 	9/ `[...]`: The `lineWidth` prop is set to 1.5. This controls the width of the
+       * lines connecting the data points.
+       * 	10/ `[...]`: The `colors` prop is set to a single value, "#26de81". This sets the
+       * color of the lines connecting the data points.
+       * 	11/ `[...]`: The `pointSize` prop is set to 1. This controls the size of each
+       * data point marker.
+       * 	12/ `[...]`: The `useMesh` prop is set to true. This enables mesh-based rendering
+       * of the data points, which can provide a more accurate and detailed visualization
+       * of the data.
+       * 	13/ `[...]`: The `enableCrosshair` prop is set to false. This disables crosshair
+       * display in the plot area.
+       * 
+       * 
+       * @param { object } markers - 2D line marker series for the y-axis, with one marker
+       * representing the baseline value of 0.
+       * 
+       * @param { string } curve - shape of the line, where `natural` is the default value
+       * and sets the line to follow the data points with a smooth curve.
+       * 
+       * @param { boolean } enableGridX - x-axis grid lines, disabling it hides the grid
+       * lines on the x-axis.
+       * 
+       * @param { boolean } enableGridY - whether to show or hide the grid lines on the
+       * y-axis in the given Line chart.
+       * 
+       * @param { number } lineWidth - width of the line that is drawn to represent the
+       * data points on the chart, with a default value of 1.5.
+       * 
+       * @param { array } colors - 1-based integer array of colors used to fill each data
+       * point's marker area.
+       * 
+       * @param { number } pointSize - size of each data point displayed on the line chart,
+       * with larger values resulting in larger points and smaller values resulting in
+       * smaller points.
+       * 
+       * @param { boolean } useMesh - 3D mesh visualization of the data points, which is
+       * enabled by default to display a smooth surface of the data in the graph.
+       * 
+       * @param { boolean } enableCrosshair - enable or disable feature that allows users
+       * to display crosshairs on the chart, which helps them accurately position the mouse
+       * pointer when clicking points or making other adjustments on the graph.
+       * 
+       * @param { object } theme - layout and appearance of the chart, including options
+       * for the axes, markers, and curves.
+       */}
       <ResponsiveLine
         data={points}
         margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
