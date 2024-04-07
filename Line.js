@@ -65,7 +65,6 @@ const Line = ({ data, metric, label }) => {
   const [amount, setAmount] = useState(0);
   const [delta, setDelta] = useState(0.0);
   const [points, setPoints] = useState([]);
-
   useEffect(() => {
     if (data.length > 1) {
       setAmount(
