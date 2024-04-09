@@ -259,6 +259,120 @@ const Line = ({ data, metric, label }) => {
        * such as axis ticks and grid lines, but not crosshairs, to enhance the visualization
        * of the line chart.
        */}
+      {/**
+       * @description creates an interactive line plot with smooth animations when zooming
+       * or panning, enabling users to explore data insights more efficiently.
+       * 
+       * @param { array } data - 2D data points to be plotted on the chart, and it is used
+       * to generate the chart's labels and markers.
+       * 
+       * @param { object } margin - 10-pixel padding added to the top, right, bottom, and
+       * left edges of the line chart.
+       * 
+       * @param { linear scale. } yScale - scale for the y-axis, setting its type to `linear`,
+       * minimum value to the maximum of all point data values multiplied by 1.5, and maximum
+       * value to the total range of point data values.
+       * 
+       * 		- Type: Linear - The scale type used for the Y-axis.
+       * 		- Minimum value: 0 - The minimum value displayed on the Y-axis.
+       * 		- Maximum value: points.length ? Math.max(...points[0].data.map((d) => d.y)) *
+       * 1.5 : 10000 - The maximum value displayed on the Y-axis, which is calculated based
+       * on the values of the `points` array and the `Math.max` function.
+       * 
+       * 	Additionally, there are various attributes provided in the `yScale` object, such
+       * as:
+       * 
+       * 		- `type`: Linear - The scale type used for the Y-axis (optional)
+       * 		- `min`: 0 - The minimum value displayed on the Y-axis (optional)
+       * 		- `max`: points.length ? Math.max(...points[0].data.map((d) => d.y)) * 1.5 :
+       * 10000 - The maximum value displayed on the Y-axis, calculated based on the values
+       * of the `points` array and the `Math.max` function (optional)
+       * 		- `stroke`: "#717d86" - The color of the line used for the Y-axis (optional)
+       * 		- `strokeWidth`: 1.5 - The width of the line used for the Y-axis (optional)
+       * 
+       * 
+       * @param { `HTMLDivElement`. } tooltip - tooltip content displayed when a user hovers
+       * over a particular point on the line graph, providing information about the data
+       * point's x-coordinate and corresponding y-value.
+       * 
+       * 		- `(datum) =>`: This is the function that gets called when the mouse is hovered
+       * over the line. The parameter `datum` is an object containing information about the
+       * specific point on the line being hovered over.
+       * 		- `if (delta)`: This checks whether a `delta` value is provided in the props.
+       * If `delta` is present, it means that the tooltip should show the exact date and
+       * time of the point being hovered over, and therefore the function returns a component
+       * that renders a `div` element with a `span` inside for the label and value.
+       * 		- `else`: This path is taken if no `delta` value is provided in the props. In
+       * this case, the tooltip return value is set to `null`, indicating that no tooltip
+       * should be displayed.
+       * 		- `{getMonthYear(datum.point.data.x)}`: This is a function that takes the x-axis
+       * value of the point being hovered over and returns the date and year in a string format.
+       * 		- `{datum.point.data.y}`: This is the value of the y-axis for the point being
+       * hovered over, which is shown as the tooltip value.
+       * 		- `[...]`: This is an array of properties that can be used to customize the
+       * appearance of the tooltip. For example, `stroke` and `strokeWidth` are used to set
+       * the color and width of the line inside the tooltip.
+       * 		- `useMesh={true}`: This property indicates that a mesh should be used for
+       * rendering the line instead of a simple line.
+       * 
+       * 
+       * @param { object } markers - 2D marker points on the chart, which can be used to
+       * visualize data beyond the actual line of the plot.
+       * 
+       * @param { string } curve - mathematical function used to draw the line.
+       * 
+       * @param { boolean } enableGridX - horizontal grid lines display for the plot,
+       * disabling their display when set to `false`.
+       * 
+       * @param { boolean } enableGridY - enablement of grid lines on the y-axis of the visualization.
+       * 
+       * @param { 1.5. } lineWidth - width of the line that is drawn to visualize the data,
+       * with a value of 1.5 in this case, which results in a thicker line.
+       * 
+       * 		- `lineWidth`: This property sets the width of the line to be plotted on the
+       * chart. It can take an integer value between 1 and 50, inclusive. The default value
+       * is 1.5.
+       * 		- `enableGridX`: Disables grid lines for the x-axis by default. However, this
+       * can be altered as needed for specific use cases.
+       * 
+       * 
+       * @param { array } colors - 4 color codes of different markers displayed on the
+       * graph, with each code representing a distinct color.
+       * 
+       * @param { 1. } pointSize - 3D point size of each marker, with a value of 1 indicating
+       * small points and larger values resulting in larger points.
+       * 
+       * 		- `margin`: Sets the margins (in pixels) on each side of the line.
+       * 		- `yScale`: Defines the scaling for the y-axis, which can be linear or logarithmic.
+       * The minimum and maximum values are set based on the range of values in the `points`
+       * array.
+       * 		- `tooltip`: A function that returns a tooltip message when the user hovers over
+       * a point on the line. In this case, the tooltip displays the month and year of the
+       * data point, followed by its value.
+       * 		- `markers`: An array of objects defining the appearance of markers on the line.
+       * In this case, there is only one marker defined with an x-axis of "y" and a line
+       * style with a stroke width of 1.5 and the color "#717d86".
+       * 		- `curve`: Sets the type of curve to use for the line (linear or natural).
+       * 		- `enableGridX`: Disables grid lines on the x-axis.
+       * 		- `enableGridY`: Disables grid lines on the y-axis.
+       * 		- `lineWidth`: Sets the width of the line to 1.5 pixels.
+       * 		- `colors`: An array of colors for the line, with a single value `#26de81`.
+       * 		- `useMesh`: Enables the use of a mesh for rendering the line instead of a simple
+       * line.
+       * 		- `enableCrosshair`: Disables the display of a crosshair on the line.
+       * 		- `theme`: An object that customizes the appearance of the axis.
+       * 
+       * 
+       * @param { boolean } useMesh - 3D mesh visualization feature, which enables or
+       * disables the rendering of 3D meshes for each data point in the line plot.
+       * 
+       * @param { boolean } enableCrosshair - ability of users to place a cross on the line
+       * graph to make specific points when using the tooltip feature.
+       * 
+       * @param { object } theme - configuration for the chart's theme, which includes
+       * setting properties for the axis, grid, line width, colors, and other visual elements
+       * of the chart.
+       */}
       <ResponsiveLine
         data={points}
         margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
