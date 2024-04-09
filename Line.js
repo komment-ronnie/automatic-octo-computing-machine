@@ -372,6 +372,89 @@ const Line = ({ data, metric, label }) => {
        * setting properties for the axis, grid, line width, colors, and other visual elements
        * of the chart.
        */}
+      {/**
+       * @description generates a line chart with markers and curve, enabling mesh
+       * visualization, and customizing various settings such as colors, point size, line
+       * width, grid visibility, and theme options for the axis and lines.
+       * 
+       * @param { object } data - 2D array of data points that will be used to generate the
+       * line chart.
+       * 
+       * @param { object } margin - 10-pixel margins added to the top, right, bottom, and
+       * left sides of the generated line chart to create space between the chart and any
+       * surrounding content.
+       * 
+       * @param { linear scale. } yScale - 1-to-1 linear scaling of the y-axis, ensuring
+       * that the range of values displayed on the y-axis is proportionate to the actual
+       * values in the data.
+       * 
+       * 		- `type`: The scaling type is set to `linear`, which means that the value of
+       * each data point is scaled proportionally based on its index in the data array.
+       * 		- `min`: The minimum value of the scaled range is set to 0, indicating that the
+       * y-values can take on any positive integer value.
+       * 		- `max`: The maximum value of the scaled range is set to the product of the
+       * number of data points and a factor of 1.5, which allows for more extensive scaling
+       * without overflowing the y-axis.
+       * 
+       * 	The `tooltip` function provided as an option explains the tooltip content when a
+       * user hovers over a point on the line. For each point, it generates a tooltip with
+       * the label and value of the corresponding x-value. If the `delta` parameter is set
+       * to `true`, the tooltip also displays the actual value at that x-coordinate instead
+       * of just the label.
+       * 
+       * 
+       * @param { element of type ReactNode. } tooltip - information that will appear when
+       * the user places their cursor over a specific point on the line, and it determines
+       * what data will be displayed inside the tooltip.
+       * 
+       * 		- `datum`: The data point being hovered over.
+       * 		- `delta`: A boolean indicating whether the tooltip should display the correct
+       * month and year, or just the value. If not provided, defaults to `true`.
+       * 		- `getMonthYear()`: A function used to format the month and year part of the
+       * tooltip. It takes an x-coordinate as input and returns a string representing the
+       * month and year.
+       * 		- `lineStyle`: An object containing properties for the line style of the marker,
+       * including stroke width and color.
+       * 		- `value`: The value of the data point being hovered over.
+       * 
+       * 	Overall, this tooltip function provides various options to customize the appearance
+       * of the tooltip, such as formatting the date part, displaying the correct month and
+       * year, and using different colors and line styles.
+       * 
+       * 
+       * @param { object } markers - 2D line markers for the given data, with the specified
+       * stroke color and width.
+       * 
+       * @param { string } curve - Curve of the line, where natural is the default value
+       * and can be set to different types like `polyynomial`, `exponential`, `logarithmic`,
+       * etc.
+       * 
+       * @param { boolean } enableGridX - x grid visibility of the graph, and when set to
+       * `false`, hides the x grid lines on the chart.
+       * 
+       * @param { boolean } enableGridY - y grid visibility in the plot. When set to `false`,
+       * it hides the y grid lines, making the plot cleaner and focusing only on the marker
+       * series.
+       * 
+       * @param { number } lineWidth - width of the line used to plot the data points, and
+       * it can be set to any value between 0 and 10 inclusive.
+       * 
+       * @param { array } colors - array of colors that will be used to plot the line, with
+       * the first element in the array assigned as the line color and the remaining elements
+       * reserved for fill colors in the case of a mesh plot.
+       * 
+       * @param { integer } pointSize - size of each data point marker displayed on the
+       * line chart, with values ranging from 0 to 1 and defaulting to 1.
+       * 
+       * @param { boolean } useMesh - 3D mesh visualization, which when set to `true`,
+       * enables the generation of a 3D mesh visualization for the line plot.
+       * 
+       * @param { boolean } enableCrosshair - whether or not to display crosshairs on the
+       * plot, with a value of `true` enabling them and `false` disabling them.
+       * 
+       * @param { object } theme - axis configuration for the graph, specifically setting
+       * the line style, tick marks, and labels for the `y` axis.
+       */}
       <ResponsiveLine
         data={points}
         margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
