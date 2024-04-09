@@ -4,6 +4,7 @@ import { getMonthYear } from "../../utils/Helpers";
 import { FaInfinity } from "react-icons/fa6";
 import classNames from "classnames";
 
+
 /**
  * @description uses `useEffect` to compute and display a line chart based on an array
  * of objects containing 'data', 'metric', and 'label'. It also provides a tooltip
