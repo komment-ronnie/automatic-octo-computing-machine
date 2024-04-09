@@ -456,6 +456,71 @@ const Line = ({ data, metric, label }) => {
        * @param { object } theme - axis configuration for the graph, specifically setting
        * the line style, tick marks, and labels for the `y` axis.
        */}
+      {/**
+       * @description creates a line chart with customizable axis, tooltip, and curve
+       * options. It renders a mesh-like visualization with colored lines, points, and
+       * markers on the y-axis.
+       * 
+       * @param { object } data - 2D dataset used to generate the line plot, and it provides
+       * the x-values and corresponding y-values for each point on the line.
+       * 
+       * @param { object } margin - 10-pixel buffer applied to each side of the chart area,
+       * helping prevent any part of the plot from overflowing into adjacent regions when
+       * displayed on screens or printed at different scales.
+       * 
+       * @param { linear scale. } yScale - scalar transformation for the values of the
+       * y-axis, which maps them to a range of [0, 10000] for the tooltip's display.
+       * 
+       * 	1/ Type: The `yScale` is defined as an instance of the `linearScale` class,
+       * indicating that it applies a linear transformation to the values in the `y` axis.
+       * 	2/ Minimum and Maximum values: The `min` property sets the minimum value of the
+       * scaled range to 0, while the `max` property defines the maximum value as the maximum
+       * value of the original `points` data array divided by 1.5. This ensures that the
+       * chart does not go beyond a range of [0, ∞).
+       * 	3/ Domain: The `domain` property is set to the union of the ranges of the x and
+       * y axes, which means that the scaled values in the y axis will be within the range
+       * of the x axis.
+       * 	4/ Ticks: The `ticks` property defines the labels for the ticks on the y-axis.
+       * The `line` property of the ticks is set to `stroke: none`, which removes any tick
+       * marks.
+       * 
+       * 
+       * @param { Component } tooltip - tooltip display format for each point on the line
+       * chart, with the capability to provide additional information about a specific point
+       * when hovered upon.
+       * 
+       * @param { object } markers - marker lines for the line chart, where each marker is
+       * defined by the `axis`, `lineStyle`, `value`, and `color` properties.
+       * 
+       * @param { string } curve - visualization style of the line, with the available
+       * options being `natural`, `cardinal`, or `stepper`.
+       * 
+       * @param { boolean } enableGridX - enablement of the grid on the x-axis and has no
+       * impact when set to `false`.
+       * 
+       * @param { boolean } enableGridY - y grid lines for the line chart, when set to false
+       * disables them.
+       * 
+       * @param { number } lineWidth - width of the line drawn by the chart, and it is set
+       * to 1.5 in this function to indicate that the line should be thicker than the default
+       * line width.
+       * 
+       * @param { array } colors - 6 different colors used to fill in the area of the line
+       * chart, with the default value being `#26de81`.
+       * 
+       * @param { number } pointSize - point size of the marker used to display data points
+       * in the visualization, and it can take any value between 0 and 1.
+       * 
+       * @param { boolean } useMesh - 3D mesh visualization, which when set to `true`,
+       * enables the display of a 3D mesh representing the data points on the line chart.
+       * 
+       * @param { boolean } enableCrosshair - whether to display a crosshair (a vertical
+       * line that shows where the current mouse position falls on the chart) or not when
+       * hovering over the graph.
+       * 
+       * @param { object } theme - visual styling of the graph, including settings for axis
+       * ticks, line styles, and color schemes.
+       */}
       <ResponsiveLine
         data={points}
         margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
