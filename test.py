@@ -7,7 +7,6 @@ def fail():
     a.append(a)
     json.dumps(a)
 
-
 def goto(linenum):
     """
     This function sets the `line` variable to the specified `linenum`.

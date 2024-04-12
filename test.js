@@ -236,21 +236,7 @@ jQuery.fn = jQuery.prototype = {
 	}
 };
 
-/**
- * @description This function is a deep-level merging and cloning mechanism for
- * objects, arrays or plain JSON data. It takes an object as its first argument
- * (target), and recursively iterates over the remaining arguments (options) to merge
- * or clone them into the target object. The function checks for possible conflicts
- * by comparing the source values with the existing values in the target object, and
- * then decides whether to move the source value directly or to create a clone of it
- * before merging.
- * 
- * @returns { object } The function returns a modified version of the input object,
- * where deep copies of objects are made if the `deep` parameter is set to true. The
- * function iterates through the input arguments and makes copies of objects or assigns
- * values to existing properties in the target object. If no value is provided for a
- * property, it will leave the property unchanged.
- */
+
 jQuery.extend = jQuery.fn.extend = function() {
 	var options, name, src, copy, copyIsArray, clone,
 		target = arguments[ 0 ] || {},
