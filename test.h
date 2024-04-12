@@ -2,7 +2,7 @@
 #ifndef MY_CLASS_H // include guard
 #define MY_CLASS_H
 
-namespace N
+namespace M
 {
     class my_class
     {
