@@ -1,16 +1,5 @@
 import React from 'react';
-/**
- * @description This code defines a function `add` that takes two number arguments
- * and returns their sum, and another function `sin` that takes no argument and returns
- * the sine of a value using the `Math.sin()` method. The code also defines an array
- * `results` that contains the results of calling both functions with different input
- * values. Finally, the code renders an HTML element with a header and an unordered
- * list (UL) to display the results.
- * 
- * @returns { number } The output of this code is a web page displaying a list of two
- * mathematical results, each with their corresponding index number. The results are
- * `5 + 3 = 8` and `Math.PI / 2 = 1.57079635`.
- */
+
 const MathComponent: React.FC = () => {
     /**
      * @description This function adds two numbers together.
