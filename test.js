@@ -28,25 +28,7 @@ jQuery.fn = jQuery.prototype = {
 	toArray: function() {
 		return slice.call( this );
 	},
-	/**
-	 * @description This function takes a number `num` and returns an array of elements
-	 * from an object or set, depending on the value of `num`. If `num` is null, it returns
-	 * all the elements in a clean array. If `num` is a negative integer, it returns just
-	 * the one element at the specified position. Otherwise, it returns all the elements
-	 * from the set.
-	 * 
-	 * @param { number } num - The `num` input parameter determines whether the function
-	 * returns an entire array or a single element from a set. If `num` is null, the
-	 * function returns all elements in an array using `slice.call()`. If `num` is a
-	 * negative number, the function returns the specified element from the set. Otherwise,
-	 * it returns the entire set.
-	 * 
-	 * @returns { array } The output of this function depends on the input `num`. If `num`
-	 * is `null`, the function returns a clean array containing all elements in the set.
-	 * If `num` is a negative integer, the function returns the element at the specified
-	 * index plus the length of the set, wrapping around to the beginning of the set if
-	 * necessary. Otherwise, the function returns the single element at the specified index.
-	 */
+
 	get: function( num ) {
 
 		// Return all the elements in a clean array
