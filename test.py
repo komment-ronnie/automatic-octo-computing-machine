@@ -34,11 +34,6 @@ while True:
         goto(1)
 
 def terminate():
-    """
-    Nothing. The "terminate" function does nothing. It is an empty function that
-    does not perform any actions or have any effect.
-
-    """
     pass
 
 def default_matrix_multiplication(a: List, b: List) -> List:

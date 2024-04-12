@@ -1,18 +1,7 @@
 import React from 'react';
 
 const MathComponent: React.FC = () => {
-    /**
-     * @description This function adds two numbers together.
-     * 
-     * @param { number } a - The `a` input parameter in the `add()` function represents
-     * the first number to be added to the second number `b`.
-     * 
-     * @param { number } b - The `b` input parameter in the `add` function represents the
-     * second number to be added to the first number. It is used in the function's return
-     * statement to calculate the sum of the two numbers.
-     * 
-     * @returns { number } The output of this function is the sum of the two input numbers.
-     */
+
     function add(a: number, b: number): number {
         return a + b;
     }
