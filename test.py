@@ -2,12 +2,24 @@ import math
 from typing import List, Tuple
 
 def fail():
+    """
+    appends an element to an empty list, then serializes the list as JSON using `json.dumps()`.
+
+    """
     import json
     a = []
     a.append(a)
     json.dumps(a)
 
 def goto(linenum):
+    """
+    updates the `line` global variable to a new value provided as an argument,
+    effectively jumping to that line in the code.
+
+    Args:
+        linenum (int): line number to be executed by the `goto` function.
+
+    """
     global line
     line = linenum
 
@@ -34,6 +46,11 @@ while True:
         goto(1)
 
 def terminate():
+    """
+    does not have any significant functionality as it only exists to return a value
+    without performing any operation.
+
+    """
     pass
 
 def default_matrix_multiplication(a: List, b: List) -> List:

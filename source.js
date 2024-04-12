@@ -1,4 +1,12 @@
 
+/**
+ * @description calculates the factorial of a given positive integer `n`, returning
+ * its value.
+ * 
+ * @param { integer } n - integer value for which the factorial is being calculated.
+ * 
+ * @returns { integer } the value of the factorial of a given integer `n`.
+ */
 function factorial(n) {
     if (n === 0 || n === 1) {
         return 1;
@@ -7,6 +15,14 @@ function factorial(n) {
     }
 }
 
+/**
+ * @description determines whether a given number is prime or not by checking for
+ * divisibility using a modified Sieve of Eratosthenes algorithm.
+ * 
+ * @param { integer } num - number that is being tested for primality.
+ * 
+ * @returns { boolean } a boolean value indicating whether the input number is prime.
+ */
 function isPrime(num) {
     if (num <= 1) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
