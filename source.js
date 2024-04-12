@@ -1,18 +1,4 @@
-/**
- * @description This function calculates the factorial of a given integer `n`. It has
- * two base cases: `n = 0` or `n = 1`, in which case the result is `1`. Otherwise,
- * it recursively calls itself with `n - 1` as the input, and multiplies the result
- * by `n` to obtain the final factorial value.
- * 
- * @param { integer } n - The `n` input parameter determines the output of the function.
- * If `n` is 0 or 1, the function returns 1, otherwise it returns the product of `n`
- * and the factorial of `n-1`.
- * 
- * @returns { integer } The function `factorial` calculates the factorial of a given
- * integer `n`. For `n` equal to 0 or 1, the function returns 1 directly. Otherwise,
- * it recursively calls itself with `n - 1` as the argument, and multiplies the result
- * by `n`. The output of the function is therefore the value of the factorial of `n`.
- */
+
 function factorial(n) {
     if (n === 0 || n === 1) {
         return 1;
