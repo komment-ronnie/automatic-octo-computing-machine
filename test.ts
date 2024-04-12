@@ -1,7 +1,23 @@
 import React from 'react';
 
+/**
+ * @description computes and returns sine values for given angles, while also computing
+ * and returning the sum of two numbers passed as arguments to its `add()` function.
+ * 
+ * @returns { number } a list of two numbers: `5` and `Math.PI / 2`.
+ */
 const MathComponent: React.FC = () => {
 
+    /**
+     * @description takes two `number` parameters and returns their sum.
+     * 
+     * @param { number } a - first number to be added to the second number provided as
+     * the `b` parameter.
+     * 
+     * @param { number } b - 2nd number to be added to the `a` parameter.
+     * 
+     * @returns { number } the sum of the two input numbers.
+     */
     function add(a: number, b: number): number {
         return a + b;
     }
