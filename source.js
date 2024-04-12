@@ -7,7 +7,6 @@ function factorial(n) {
         return n * factorial(n - 1);
     }
 }
-
 /**
  * @description This function checks whether a given number is prime or not. It first
  * checks if the number is less than or equal to 1, and returns false in that case.
