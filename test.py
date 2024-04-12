@@ -8,14 +8,6 @@ def fail():
     json.dumps(a)
 
 def goto(linenum):
-    """
-    This function sets the `line` variable to the specified `linenum`.
-
-    Args:
-        linenum (int): The `linenum` input parameter sets the current line number
-            to be executed when the `goto` function is called.
-
-    """
     global line
     line = linenum
 

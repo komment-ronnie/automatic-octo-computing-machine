@@ -13,7 +13,6 @@ import { support } from "./var/support.js";
 import { isArrayLike } from "./core/isArrayLike.js";
 import { DOMEval } from "./core/DOMEval.js";
 
-
 var version = "@VERSION",
 	rhtmlSuffix = /HTML$/i,
 
@@ -40,21 +39,7 @@ jQuery.fn = jQuery.prototype = {
 		// Return just the one element from the set
 		return num < 0 ? this[ num + this.length ] : this[ num ];
 	},
-	/**
-	 * @description This function takes an array of elements and merges them with the
-	 * existing objects of a constructor, returning a new object that combines both. It
-	 * also retains the previous object as the "prevObject" property.
-	 * 
-	 * @param { object } elems - The `elems` input parameter merges an array of elements
-	 * with the current object, creating a new object that combines the properties and
-	 * methods of both.
-	 * 
-	 * @returns { object } The function merges the elements in `elems` with the existing
-	 * elements in the current object, creating a new object that combines both sets of
-	 * elements. The resulting object returns the merged elements and keeps track of the
-	 * original object as its "prevObject". In summary, the output is a new object
-	 * containing a mix of elements from both the current object and `elems`.
-	 */
+
 	pushStack: function( elems ) {
 		var ret = jQuery.merge( this.constructor(), elems );
 		ret.prevObject = this;
