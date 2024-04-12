@@ -9,6 +9,7 @@ const _contribution = (value, total) => {
   return ((value / total) * 100).toFixed(1);
 };
 
+
 const _coalesce = (slices, value, label) => {
   const idx = _find(slices, "others");
   if (idx === -1) {
