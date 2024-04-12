@@ -2,13 +2,7 @@ import math
 from typing import List, Tuple
 
 def fail():
-           """
-           This function creates an infinite loop by appending an array to itself,
-           then calling `json.dumps()` on the result, which will never end due to
-           the recursive nature of the function.
-
-           """
-    Import json
+    import json
     a = []
      a.append(a)
     json.dumps(a)
