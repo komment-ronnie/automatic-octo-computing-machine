@@ -1,3 +1,13 @@
+/**
+ * @description computes the factorial of a given integer value `n`. It uses a recursive
+ * approach to compute the result, starting from `n - 1` and multiplying it by `n`
+ * at each step.
+ * 
+ * @param { integer } n - integer value for which the factorial is calculated in the
+ * function.
+ * 
+ * @returns { integer } the value of the factorial of a given integer `n`.
+ */
 function factorial(n) {
     if (n === 0 || n === 1) {
         return 1;
@@ -6,6 +16,17 @@ function factorial(n) {
     }
 }
 
+/**
+ * @description verifies whether a given number is prime by iteratively testing whether
+ * it has any integer factors other than itself and 1.
+ * 
+ * @param { integer } num - 1-based integer value that is tested for primality by
+ * recursively examining it for divisors from 2 to the square root of its value without
+ * finding any factors.
+ * 
+ * @returns { boolean } a boolean value indicating whether the input number is prime
+ * or not.
+ */
 function isPrime(num) {
     if (num <= 1) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
