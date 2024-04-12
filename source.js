@@ -1,5 +1,3 @@
-// @komment ignore all
-
 function factorial(n) {
     if (n === 0 || n === 1) {
         return 1;
@@ -7,22 +5,7 @@ function factorial(n) {
         return n * factorial(n - 1);
     }
 }
-/**
- * @description This function checks whether a given number is prime or not. It first
- * checks if the number is less than or equal to 1, and returns false in that case.
- * Then it loops through the numbers from 2 to the square root of the number, and
- * checks if the number is divisible by any of those numbers. If it's not divisible,
- * the function returns true, indicating that the number is prime.
- * 
- * @param { number } num - The `num` input parameter determines the number to be
- * checked for primality. It must be a positive integer greater than or equal to 1,
- * and the function will return `true` if it is prime and `false` otherwise.
- * 
- * @returns { number } The function `isPrime` returns `true` if the input number is
- * prime, and `false` otherwise. When the input number is a prime, the function
- * iterates through numbers from 2 to the square root of the input number without
- * finding any factors, indicating that the input number is indeed prime.
- */
+
 function isPrime(num) {
     if (num <= 1) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {

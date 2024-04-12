@@ -24,15 +24,7 @@ jQuery.fn = jQuery.prototype = {
 	jquery: version,
 	constructor: jQuery,
 	length: 0,
-	/**
-	 * @description This function takes the `this` object and returns a new array created
-	 * by calling the `slice()` method on it, which recursively extracts a subset of
-	 * elements from the original array.
-	 * 
-	 * @returns { array } The function `slice.call(this)` returns an array of objects
-	 * containing the same properties and methods as the original object. In other words,
-	 * it creates a shallow copy of the object.
-	 */
+
 	toArray: function() {
 		return slice.call( this );
 	},
