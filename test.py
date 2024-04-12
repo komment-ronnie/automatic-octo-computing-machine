@@ -4,7 +4,7 @@ from typing import List, Tuple
 def fail():
     import json
     a = []
-     a.append(a)
+    a.append(a)
     json.dumps(a)
 
 
